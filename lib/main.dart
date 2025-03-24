@@ -16,34 +16,343 @@ class _GraphPageState extends State<GraphPage> {
   ui.Image? _customCommentImage;
   ui.Image? _customResponseImage;
   ui.Image? _customPositiveAbnormalImage;
+  final ScrollController _scrollController = ScrollController();
+  double _chartWidth = 1000;
 
   final List<Map<String, dynamic>> jsonData = [
-    {"x": "Jan \n25", "y": 120, "institute": "Regional Hospital Sunyani", "originalValue": "120 mg/dl"},
-    {"x": "Feb \n25", "y": 80, "institute": "City Clinic Accra", "originalValue": "80 mg/dl"},
-    {"x": "Mar \n25", "y": 0, "institute": "Health Facility Kumasi", "originalValue": "Positive"},
-    {"x": "Apr \n25", "y": 60, "institute": "District Hospital Cape Coast", "originalValue": "60 mg/dl"},
-    {"x": "May \n25", "y": 111, "institute": "Local Hospital Tamale", "originalValue": "111 mg/dl"},
-    {"x": "Jun \n25", "y": 0, "institute": "District Hospital Cape Coast", "originalValue": "Comment"},
-    {"x": "July \n25", "y": 0, "institute": "District Hospital Cape Coast", "originalValue": "Negative"},
-    {"x": "Aug \n25", "y": 45, "institute": "District Hospital Cape Coast", "originalValue": "60 mg/dl"},
-    {"x": "Sep \n25", "y": 0, "institute": "District Hospital Cape Coast", "originalValue": "No response"},
-    {"x": "Oct \n25", "y": 0, "institute": "District Hospital Cape Coast", "originalValue": "Positive abnormal"},
+    {
+      "date": "2023-01-01",
+      "value": 10,
+      "refMin": 4,
+      "refMax": 20,
+      "type": "numeric",
+      "status": "normal",
+      "institute": "Central Medical Lab"
+    },
+    {
+      "date": "2023-02-05",
+      "value": 6,
+      "refMin": 2,
+      "refMax": 12,
+      "type": "numeric",
+      "status": "normal",
+      "institute": "City General Hospital"
+    },
+    {
+      "date": "2023-03-15",
+      "value": 5,
+      "refMin": 3,
+      "refMax": 15,
+      "type": "numeric",
+      "status": "abnormal",
+      "institute": "City General Hospital"
+    },
+    {
+      "date": "2023-04-10",
+      "value": 15,
+      "refMin": 10,
+      "refMax": 20,
+      "type": "numeric",
+      "status": "normal",
+      "institute": "MedFirst Diagnostics"
+    },
+    {
+      "date": "2023-05-20",
+      "value": -5,
+      "type": "qualitative",
+      "result": "positive",
+      "status": "abnormal",
+      "institute": "Regional Health Center"
+    },
+    {
+      "date": "2023-06-12",
+      "value": 9,
+      "refMin": 5,
+      "refMax": 15,
+      "type": "numeric",
+      "status": "normal",
+      "institute": "Premier Medical Labs"
+    },
+    {
+      "date": "2023-07-23",
+      "value": -5,
+      "type": "qualitative",
+      "result": "positive",
+      "status": "abnormal",
+      "institute": "Regional Health Center"
+    },
+    {
+      "date": "2023-08-18",
+      "value": 12,
+      "refMin": 8,
+      "refMax": 18,
+      "type": "numeric",
+      "status": "normal",
+      "institute": "HealthScope Labs"
+    },
+    {
+      "date": "2023-09-05",
+      "value": 22,
+      "refMin": 15,
+      "refMax": 25,
+      "type": "numeric",
+      "status": "abnormal",
+      "institute": "HealthScope Labs"
+    },
+    {
+      "date": "2023-10-30",
+      "value": 7,
+      "refMin": 4,
+      "refMax": 10,
+      "type": "numeric",
+      "status": "normal",
+      "institute": "City Medical Center"
+    },
+    {
+      "date": "2023-11-11",
+      "value": -5,
+      "type": "qualitative",
+      "result": "pending",
+      "status": "comment",
+      "institute": "Metropolitan Lab Services"
+    },
+    {
+      "date": "2023-12-25",
+      "value": 14,
+      "refMin": 10,
+      "refMax": 20,
+      "type": "numeric",
+      "status": "normal",
+      "institute": "Advanced Diagnostic Solutions"
+    },
+    {
+      "date": "2024-01-09",
+      "value": 18,
+      "refMin": 10,
+      "refMax": 30,
+      "type": "numeric",
+      "status": "normal",
+      "institute": "MedFirst Diagnostics"
+    },
+    {
+      "date": "2024-02-10",
+      "value": 8,
+      "refMin": 5,
+      "refMax": 12,
+      "type": "numeric",
+      "status": "normal",
+      "institute": "City General Hospital"
+    },
+    {
+      "date": "2024-03-14",
+      "value": -5,
+      "type": "qualitative",
+      "result": "above_normal",
+      "status": "comment",
+      "institute": "Premier Medical Labs"
+    },
+    {
+      "date": "2024-04-17",
+      "value": 13,
+      "refMin": 10,
+      "refMax": 20,
+      "type": "numeric",
+      "status": "normal",
+      "institute": "HealthScope Labs"
+    },
+    {
+      "date": "2024-05-23",
+      "value": 22,
+      "refMin": 15,
+      "refMax": 30,
+      "type": "numeric",
+      "status": "abnormal",
+      "institute": "City Medical Center"
+    },
+    {
+      "date": "2024-06-21",
+      "value": -5,
+      "type": "qualitative",
+      "result": "pending",
+      "status": "comment",
+      "institute": "Premier Medical Labs"
+    },
+    {
+      "date": "2024-07-09",
+      "value": 16,
+      "refMin": 12,
+      "refMax": 22,
+      "type": "numeric",
+      "status": "normal",
+      "institute": "Metropolitan Lab Services"
+    },
+    {
+      "date": "2024-08-03",
+      "value": 19,
+      "refMin": 14,
+      "refMax": 25,
+      "type": "numeric",
+      "status": "normal",
+      "institute": "Regional Health Center"
+    },
+    {
+      "date": "2024-09-12",
+      "value": -5,
+      "type": "qualitative",
+      "result": "negative",
+      "status": "normal",
+      "institute": "City General Hospital"
+    },
+    {
+      "date": "2024-10-28",
+      "value": 24,
+      "refMin": 18,
+      "refMax": 28,
+      "type": "numeric",
+      "status": "abnormal",
+      "institute": "MedFirst Diagnostics"
+    },
+    {
+      "date": "2024-11-05",
+      "value": 22,
+      "refMin": 15,
+      "refMax": 25,
+      "type": "numeric",
+      "status": "abnormal",
+      "institute": "HealthScope Labs"
+    },
+    {
+      "date": "2024-12-20",
+      "value": 14,
+      "refMin": 10,
+      "refMax": 20,
+      "type": "numeric",
+      "status": "normal",
+      "institute": "Advanced Diagnostic Solutions"
+    },
+    {
+      "date": "2025-01-01",
+      "value": 17,
+      "refMin": 12,
+      "refMax": 22,
+      "type": "numeric",
+      "status": "normal",
+      "institute": "Central Medical Lab"
+    },
+    {
+      "date": "2025-02-14",
+      "value": 20,
+      "refMin": 15,
+      "refMax": 28,
+      "type": "numeric",
+      "status": "normal",
+      "institute": "Metropolitan Lab Services"
+    },
+    {
+      "date": "2025-03-09",
+      "value": 12,
+      "refMin": 8,
+      "refMax": 18,
+      "type": "numeric",
+      "status": "normal",
+      "institute": "City Medical Center"
+    },
+    {
+      "date": "2025-04-22",
+      "value": -5,
+      "type": "qualitative",
+      "result": "positive",
+      "status": "abnormal",
+      "institute": "Regional Health Center"
+    },
+    {
+      "date": "2025-05-30",
+      "value": 21,
+      "refMin": 16,
+      "refMax": 26,
+      "type": "numeric",
+      "status": "normal",
+      "institute": "Premier Medical Labs"
+    },
+    {
+      "date": "2025-06-14",
+      "value": 10,
+      "refMin": 6,
+      "refMax": 15,
+      "type": "numeric",
+      "status": "normal",
+      "institute": "HealthScope Labs"
+    },
+    {
+      "date": "2025-07-08",
+      "value": 25,
+      "refMin": 20,
+      "refMax": 30,
+      "type": "numeric",
+      "status": "abnormal",
+      "institute": "MedFirst Diagnostics"
+    },
+    {
+      "date": "2025-08-30",
+      "value": -5,
+      "type": "qualitative",
+      "result": "above_normal",
+      "status": "comment",
+      "institute": "Metropolitan Lab Services"
+    },
+    {
+      "date": "2025-09-10",
+      "value": 14,
+      "refMin": 9,
+      "refMax": 18,
+      "type": "numeric",
+      "status": "normal",
+      "institute": "City General Hospital"
+    },
+    {
+      "date": "2025-10-25",
+      "value": 23,
+      "refMin": 18,
+      "refMax": 27,
+      "type": "numeric",
+      "status": "abnormal",
+      "institute": "Advanced Diagnostic Solutions"
+    },
+    {
+      "date": "2025-11-19",
+      "value": 8,
+      "refMin": 5,
+      "refMax": 12,
+      "type": "numeric",
+      "status": "normal",
+      "institute": "Regional Health Center"
+    },
+    {
+      "date": "2025-12-12",
+      "value": 6,
+      "refMin": 4,
+      "refMax": 10,
+      "type": "numeric",
+      "status": "normal",
+      "institute": "Advanced Diagnostic Solutions"
+    }
   ];
 
-  ui.Image? getImageForOriginalValue(String originalValue) {
-    switch (originalValue) {
-      case 'Positive':
-        return _customPImage;
-      case 'Negative':
-        return _customNImage;
-      case 'Comment':
-        return _customCommentImage;
-      case 'No response':
-        return _customResponseImage;
-      case 'Positive abnormal':
+  ui.Image? getImageForResult(String? result, String? status) {
+    final condition = ('$result-$status');
+    switch (condition) {
+      case 'positive-abnormal':
         return _customPositiveAbnormalImage;
+      case 'positive-normal':
+        return _customPImage;
+      case 'negative-normal':
+        return _customNImage;
+      case 'negative-abnormal':
+        return _customNImage;
+      case 'response':
+        return _customResponseImage;
       default:
-        return _customCommentImage; // Return null or a default image for unknown values
+        return _customCommentImage;
     }
   }
 
@@ -51,6 +360,25 @@ class _GraphPageState extends State<GraphPage> {
   void initState() {
     super.initState();
     _loadCustomImages();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      // Calculate chart width after initial build
+      _calculateChartWidth();
+    });
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  void _calculateChartWidth() {
+    final newWidth = jsonData.length * 60.0;
+    if (newWidth != _chartWidth) {
+      setState(() {
+        _chartWidth = newWidth;
+      });
+    }
   }
 
   Future<void> _loadCustomImages() async {
@@ -78,55 +406,62 @@ class _GraphPageState extends State<GraphPage> {
     });
   }
 
+  String _formatDate(String date) {
+    final parts = date.split('-');
+    if (parts.length >= 2) {
+      return '${_getMonthAbbreviation(int.parse(parts[1]))}\n${parts[0].substring(2)}';
+    }
+    return date;
+  }
+
+  String _getMonthAbbreviation(int month) {
+    switch (month) {
+      case 1: return 'Jan';
+      case 2: return 'Feb';
+      case 3: return 'Mar';
+      case 4: return 'Apr';
+      case 5: return 'May';
+      case 6: return 'Jun';
+      case 7: return 'Jul';
+      case 8: return 'Aug';
+      case 9: return 'Sep';
+      case 10: return 'Oct';
+      case 11: return 'Nov';
+      case 12: return 'Dec';
+      default: return '';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    final List<FlSpot> spots = jsonData
-        .asMap()
-        .entries
-        .map((entry) => FlSpot(entry.key.toDouble(), entry.value["y"].toDouble()))
+
+    final List<int> numericIndices = [];
+    final List<FlSpot> numericSpots = [];
+    final List<int> qualitativeIndices = [];
+    final List<FlSpot> qualitativeSpots = [];
+
+    for (int i = 0; i < jsonData.length; i++) {
+      final item = jsonData[i];
+      if (item['type'] == 'numeric') {
+        numericIndices.add(i);
+        numericSpots.add(FlSpot(i.toDouble(), (item['value'] as num).toDouble()));
+      } else if (item['type'] == 'qualitative') {
+        qualitativeIndices.add(i);
+        qualitativeSpots.add(FlSpot(i.toDouble(), 0)); // Using y=0 for qualitative data
+      }
+    }
+
+    // Get all y values for numeric data to determine min/max
+    final yValues = jsonData
+        .where((item) => item['type'] == 'numeric')
+        .map((item) => (item['value'] as num).toDouble())
         .toList();
 
-    final List<String> xLabels = jsonData.map((data) => data["x"] as String).toList();
-    final List<double> yLabels = jsonData.map((data) => (data["y"] as num).toDouble())
-        .toSet()
-        .toList()
-      ..sort();
+    // Add some padding to y-axis
+    final double minY = (yValues.isNotEmpty ? yValues.reduce((a, b) => a < b ? a : b) : 0) - 5;
+    final double maxY = (yValues.isNotEmpty ? yValues.reduce((a, b) => a > b ? a : b) : 0) + 5;
 
-    // Filter spots for the second line (special cases)
-    final List<int> specialIndices = [];
-    final List<FlSpot> specialSpots = spots.where((spot) {
-      int index = spots.indexOf(spot); // Get the index of the spot
-      String originalValue = jsonData[index]['originalValue']; // Get the originalValue
-      bool isSpecial = [
-        'Positive',
-        'Negative',
-        'Comment',
-        'No response',
-        'Positive abnormal',
-      ].contains(originalValue);
-      if (isSpecial) {
-        specialIndices.add(index); // Track the original index
-      }
-      return isSpecial;
-    }).toList();
-
-// Filter spots for the first line (normal cases)
-    final List<int> normalIndices = [];
-    final List<FlSpot> normalSpots = spots.where((spot) {
-      int index = spots.indexOf(spot); // Get the index of the spot
-      String originalValue = jsonData[index]['originalValue']; // Get the originalValue
-      bool isNormal = ![
-        'Positive',
-        'Negative',
-        'Comment',
-        'No response',
-        'Positive abnormal',
-      ].contains(originalValue);
-      if (isNormal) {
-        normalIndices.add(index); // Track the original index
-      }
-      return isNormal;
-    }).toList();
+    final xLabels = jsonData.map((item) => _formatDate(item['date'])).toList();
 
     return Scaffold(
       appBar: AppBar(
@@ -211,142 +546,9 @@ class _GraphPageState extends State<GraphPage> {
               ),
             ),
             if (_selectedIndex != null)
-              Padding(
-                padding: const EdgeInsets.all(12),
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade50,
-                    borderRadius: BorderRadius.all(Radius.circular(8)),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Column(
-                            children: [
-                              Text(
-                                'Original Value',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 10,
-                                    color: Colors.grey.shade500),
-                              ),
-                              Text(
-                                jsonData[_selectedIndex!]['originalValue'],
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.grey.shade900),
-                              )
-                            ],
-                          ),
-                          Column(
-                            children: [
-                              Text(
-                                'Normal range',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 10,
-                                    color: Colors.grey.shade500),
-                              ),
-                              Text(
-                                '111 - 343',
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.grey.shade900),
-                              )
-                            ],
-                          )
-                        ],
-                      ),
-                      SizedBox(
-                        height: 8,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Institute',
-                            style: TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 10,
-                                color: Colors.grey.shade500),
-                          ),
-                          Text(
-                            jsonData[_selectedIndex!]['institute'],
-                            style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.grey.shade900),
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              _buildPointDetails(_selectedIndex!),
             if (_selectedIndex2 != null)
-              Padding(
-                padding: const EdgeInsets.all(12),
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade50,
-                    borderRadius: BorderRadius.all(Radius.circular(8)),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Column(
-                            children: [
-                              Text(
-                                'Date',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 10,
-                                    color: Colors.grey.shade500),
-                              ),
-                              Text(
-                                jsonData[_selectedIndex2!]['x'],
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.grey.shade900),
-                              )
-                            ],
-                          ),
-                          Column(
-                            children: [
-                              Text(
-                                'Normal range',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 10,
-                                    color: Colors.grey.shade500),
-                              ),
-                              Text(
-                                '111 - 343',
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.grey.shade900),
-                              )
-                            ],
-                          )
-                        ],
-                      ),
-
-                    ],
-                  ),
-                ),
-              ),
+              _buildPointDetails(_selectedIndex2!),
             if (_selectedIndex == null && _selectedIndex2 == null)
               Padding(
                 padding: const EdgeInsets.all(12.0),
@@ -405,201 +607,285 @@ class _GraphPageState extends State<GraphPage> {
 
             SizedBox(height: 20,),
 
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: SizedBox(
-                height: 251,
-                child: LineChart(
-                  LineChartData(
-                    minX: 0,
-                    maxX: jsonData.length.toDouble() - 1,
-                    minY: yLabels.first,
-                    maxY: yLabels.last,
-                    gridData: FlGridData(show: false),
-                    borderData: FlBorderData(
-                      show: false,
-                    ),
-                    extraLinesData: ExtraLinesData(
-                      horizontalLines: yLabels.map((yValue) {
-                        return HorizontalLine(
-                          y: yValue,
-                          color: Colors.grey.shade300,
-                          strokeWidth: 1,
-                          dashArray: [5, 5], // Dashed line style
-                        );
-                      }).toList(),
-                    ),
-                    titlesData: FlTitlesData(
-                      rightTitles: AxisTitles(
-                        sideTitles: SideTitles(
-                          showTitles: false,
-                          reservedSize: 30,
-                          getTitlesWidget: (value, meta) {
-                            if (yLabels.contains(value)) {
-                              return Text(value.toInt().toString());
+            Expanded(
+              child: SingleChildScrollView(
+                controller: _scrollController,
+                scrollDirection: Axis.horizontal,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: SizedBox(
+                    width: _chartWidth,
+                    height: 251,
+                    child: LineChart(
+                      LineChartData(
+                        minX: 0,
+                        maxX: jsonData.length.toDouble() - 1,
+                        minY: minY,
+                        maxY: maxY,
+                        gridData: FlGridData(show: false),
+                        borderData: FlBorderData(
+                          show: false,
+                        ),
+
+                        titlesData: FlTitlesData(
+                          rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                          leftTitles: AxisTitles(
+                            sideTitles: SideTitles(
+                              showTitles: true,
+                              reservedSize: 50,
+                              getTitlesWidget: (value, meta) {
+                                return Text(value.toInt().toString(),
+                                    style: TextStyle(fontWeight: FontWeight.w400, fontSize: 12, color: Colors.grey.shade500));
+                              },
+                            ),
+                          ),
+                          bottomTitles: AxisTitles(
+                            sideTitles: SideTitles(
+                              showTitles: true,
+                              reservedSize: 50,
+                              interval: 1,
+                              getTitlesWidget: (value, meta) {
+                                int index = value.round();
+                                if (index >= 0 && index < xLabels.length) {
+                                  return Padding(
+                                    padding: const EdgeInsets.only(top: 20.0),
+                                    child: Text(
+                                      xLabels[index],
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 10,
+                                        color: Colors.grey.shade500,
+                                      ),
+                                    ),
+                                  );
+                                }
+                                return SizedBox.shrink();
+                              },
+                            ),
+                          ),
+                          topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                        ),
+                        lineBarsData: [
+                          // Numeric data line
+                          LineChartBarData(
+                            spots: numericSpots,
+                            isCurved: false,
+                            color: Colors.black,
+                            barWidth: 2,
+                            isStrokeCapRound: true,
+                            belowBarData: BarAreaData(show: false),
+                            dotData: FlDotData(
+                              show: true,
+                              getDotPainter: (spot, percent, barData, index) {
+                                int originalIndex = numericIndices[index];
+                                bool isSelected = _selectedIndex == originalIndex;
+                                final item = jsonData[originalIndex];
+                                final isNormal = item['status'] == 'normal';
+                
+                                return FlDotCirclePainter(
+                                  radius: 10,
+                                  color: isNormal ? Colors.green : Colors.red,
+                                  strokeColor: isSelected ? Colors.grey : Colors.transparent,
+                                  strokeWidth: 6,
+                                );
+                              },
+                            ),
+                          ),
+                          // Qualitative data line
+                          LineChartBarData(
+                            spots: qualitativeSpots,
+                            isCurved: false,
+                            color: Colors.transparent,
+                            barWidth: 0,
+                            isStrokeCapRound: true,
+                            belowBarData: BarAreaData(show: false),
+                            dotData: FlDotData(
+                              show: true,
+                              getDotPainter: (spot, percent, barData, index) {
+                                int originalIndex = qualitativeIndices[index];
+                                bool isSelected = _selectedIndex2 == originalIndex;
+                                final item = jsonData[originalIndex];
+                
+                                return CustomImagePainter(
+                                  getImageForResult(item['result'],item['status']) ?? _customCommentImage!,
+                                  isSelected: isSelected,
+                                );
+                              },
+                            ),
+                          ),
+                        ],
+
+                        extraLinesData: ExtraLinesData(
+                          extraLinesOnTop: false,
+                          horizontalLines: yValues
+                              .asMap()
+                              .entries
+                              .where((entry) => entry.key % 2 == 0) // Only take even indices
+                              .map((entry) => HorizontalLine(
+                            y: entry.value,
+                            color: Colors.grey.shade300,
+                            strokeWidth: 1,
+                          ))
+                              .toList(),
+                        ),
+                        lineTouchData: LineTouchData(
+                          touchTooltipData: LineTouchTooltipData(
+                            getTooltipItems: (List<LineBarSpot> touchedSpots) => [],
+                          ),
+                          handleBuiltInTouches: true,
+                          touchCallback: (FlTouchEvent event, LineTouchResponse? touchResponse) {
+                            if (touchResponse != null && touchResponse.lineBarSpots != null && touchResponse.lineBarSpots!.isNotEmpty) {
+                              setState(() {
+                                if (touchResponse.lineBarSpots!.first.barIndex == 0) {
+                                  // Numeric data
+                                  int originalIndex = numericIndices[touchResponse.lineBarSpots!.first.spotIndex];
+                                  _selectedIndex = originalIndex;
+                                  _selectedIndex2 = null;
+                                } else if (touchResponse.lineBarSpots!.first.barIndex == 1) {
+                                  // Qualitative data
+                                  int originalIndex = qualitativeIndices[touchResponse.lineBarSpots!.first.spotIndex];
+                                  _selectedIndex2 = originalIndex;
+                                  _selectedIndex = null;
+                                }
+                              });
+                            } else {
+                              setState(() {
+                                _selectedIndex = null;
+                                _selectedIndex2 = null;
+                              });
                             }
-                            return Text('');
                           },
                         ),
                       ),
-                      leftTitles: AxisTitles(
-                        sideTitles: SideTitles(
-                          minIncluded: true,
-                          showTitles: true,
-                          reservedSize: 50,
-                          getTitlesWidget: (value, meta) {
-                            if (yLabels.contains(value)) {
-                              return Text(value.toInt().toString(), style: TextStyle(fontWeight: FontWeight.w400, fontSize: 12, color: Colors.grey.shade500),);
-                            }
-                            return Text('');
-                          },
-                        ),
-                      ),
-                      bottomTitles: AxisTitles(
-                        sideTitles: SideTitles(
-                          showTitles: true,
-                          reservedSize: 50,
-                          interval: 1,
-                          getTitlesWidget: (value, meta) {
-                            int index = value.round();
-                            if (index >= 0 && index < xLabels.length) {
-                              return Padding(
-                                padding: const EdgeInsets.only(top: 20.0),
-                                child: Text(
-                                  xLabels[index],
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 10,
-                                    color: Colors.grey.shade500,
-                                  ),
-                                ),
-                              );
-                            }
-                            return SizedBox.shrink(); // Return an empty widget for invalid indices
-                          },
-                        ),
-                      ),
-
-                      topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                    ),
-                    lineBarsData: [
-                      // First LineChartBarData: Connect all dots except x = 0
-                      LineChartBarData(
-                        spots: normalSpots, // Exclude x = 0
-                        isCurved: false,
-                        color: Colors.black,
-                        barWidth: 2,
-                        isStrokeCapRound: true,
-                        belowBarData: BarAreaData(show: false),
-                          dotData: FlDotData(
-                            show: true,
-                            getDotPainter: (spot, percent, barData, index) {
-                              int originalIndex = normalIndices[index]; // Get the original index
-                              bool isSelected = _selectedIndex == originalIndex;
-                              return FlDotCirclePainter(
-                                radius: 8,
-                                color: jsonData[index]['y'] >= 111 ? Colors.green : Colors.red,
-                                strokeColor: isSelected ? Colors.grey : Colors.transparent,
-                                strokeWidth: 6,
-                              );
-
-                              //   CustomDotPainter(
-                              //   radius: 10,
-                              //   color: jsonData[index]['y'] >= 111 ? Colors.green : Colors.red,
-                              //   strokeColor: isSelected ? Colors.grey : Colors.transparent,
-                              //   strokeWidth: 6,
-                              //   value: jsonData[index]['y'].toString(),
-                              //   institute: jsonData[index]['institute'],
-                              //   isSelected: isSelected,
-                              // );
-
-
-                              //   CustomIconDotPainter(
-                              //   icon: Icons.accessibility,
-                              //   color: jsonData[index]['y'] >= 111 ? Colors.green : Colors.red,
-                              //   isSelected: isSelected,
-                              // );
-
-                            },
-                          ) // Hide dots for this line
-                      ),
-
-                      // Second LineChartBarData: Display all dots, including x = 0
-                      LineChartBarData(
-                        spots: specialSpots,
-                        isCurved: false,
-                        color: Colors.transparent,
-                        barWidth: 0,
-                        isStrokeCapRound: true,
-                        belowBarData: BarAreaData(show: false),
-                        dotData: FlDotData(
-                          show: true,
-                          getDotPainter: (spot, percent, barData, index) {
-                            int originalIndex = specialIndices[index]; // Get the original index
-                            bool isSelected = _selectedIndex2 == originalIndex;
-                            return CustomImagePainter(
-                              getImageForOriginalValue(jsonData[originalIndex]['originalValue'])!,
-                              isSelected: isSelected, // Pass the selection state
-                            );
-
-                            //   CustomDotPainter(
-                            //   radius: 10,
-                            //   color: jsonData[index]['y'] >= 111 ? Colors.green : Colors.red,
-                            //   strokeColor: isSelected ? Colors.grey : Colors.transparent,
-                            //   strokeWidth: 6,
-                            //   value: jsonData[index]['y'].toString(),
-                            //   institute: jsonData[index]['institute'],
-                            //   isSelected: isSelected,
-                            // );
-
-
-                            //   CustomIconDotPainter(
-                            //   icon: Icons.accessibility,
-                            //   color: jsonData[index]['y'] >= 111 ? Colors.green : Colors.red,
-                            //   isSelected: isSelected,
-                            // );
-
-                          },
-                        ),
-                      ),
-
-                    ],
-
-                    lineTouchData: LineTouchData(
-                      touchTooltipData: LineTouchTooltipData(
-                        getTooltipItems: (List<LineBarSpot> touchedSpots) {
-                          return []; // Disable tooltip
-                        },
-                      ),
-                      handleBuiltInTouches: true,
-                      touchCallback: (FlTouchEvent event, LineTouchResponse? touchResponse) {
-                        if (touchResponse != null &&
-                            touchResponse.lineBarSpots != null &&
-                            touchResponse.lineBarSpots!.isNotEmpty) {
-                          setState(() {
-                            if (touchResponse.lineBarSpots!.first.barIndex == 0) {
-                              // First line (FlDotCirclePainter)
-                              int originalIndex = normalIndices[touchResponse.lineBarSpots!.first.spotIndex];
-                              _selectedIndex = originalIndex;
-                              _selectedIndex2 = null; // Reset the other index
-                            } else if (touchResponse.lineBarSpots!.first.barIndex == 1) {
-                              // Second line (CustomImagePainter)
-                              int originalIndex = specialIndices[touchResponse.lineBarSpots!.first.spotIndex];
-                              _selectedIndex2 = originalIndex;
-                              _selectedIndex = null; // Reset the other index
-                            }
-                          });
-                        } else {
-                          setState(() {
-                            _selectedIndex = null;
-                            _selectedIndex2 = null;
-                          });
-                        }
-                      },
                     ),
                   ),
                 ),
               ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildPointDetails(int index) {
+    final item = jsonData[index];
+    final isNumeric = item['type'] == 'numeric';
+
+    return Padding(
+      padding: const EdgeInsets.all(12),
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        decoration: BoxDecoration(
+          color: Colors.grey.shade50,
+          borderRadius: BorderRadius.all(Radius.circular(8)),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Date',
+                      style: TextStyle(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 10,
+                          color: Colors.grey.shade500),
+                    ),
+                    Text(
+                      item['date'],
+                      style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.grey.shade900),
+                    )
+                  ],
+                ),
+                if (isNumeric)
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(
+                        'Reference Range',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 10,
+                            color: Colors.grey.shade500),
+                      ),
+                      Text(
+                        '${item['refMin']} - ${item['refMax']}',
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.grey.shade900),
+                      )
+                    ],
+                  )
+                else
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(
+                        'Result',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 10,
+                            color: Colors.grey.shade500),
+                      ),
+                      Text(
+                        item['result']?.toString() ?? 'N/A',
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.grey.shade900),
+                      )
+                    ],
+                  ),
+              ],
+            ),
+            SizedBox(height: 8),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Value',
+                  style: TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 10,
+                      color: Colors.grey.shade500),
+                ),
+                Text(
+                  isNumeric ? item['value'].toString() : (item['status']?.toString() ?? 'N/A'),
+                  style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.grey.shade900),
+                )
+              ],
+            ),
+            SizedBox(height: 8),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Institute',
+                  style: TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 10,
+                      color: Colors.grey.shade500),
+                ),
+                Text(
+                  item['institute'],
+                  style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.grey.shade900),
+                )
+              ],
             ),
           ],
         ),
