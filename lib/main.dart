@@ -21,7 +21,7 @@ class _GraphPageState extends State<GraphPage> {
 
   final List<Map<String, dynamic>> jsonData = [
     {
-      "date": "2023-01-01",
+      "date": "01 Jan",
       "value": 10,
       "refMin": 4,
       "refMax": 20,
@@ -30,7 +30,7 @@ class _GraphPageState extends State<GraphPage> {
       "institute": "Central Medical Lab"
     },
     {
-      "date": "2023-02-05",
+      "date": "05 Feb",
       "value": 6,
       "refMin": 2,
       "refMax": 12,
@@ -39,7 +39,7 @@ class _GraphPageState extends State<GraphPage> {
       "institute": "City General Hospital"
     },
     {
-      "date": "2023-03-15",
+      "date": "15 Mar",
       "value": 5,
       "refMin": 3,
       "refMax": 15,
@@ -48,7 +48,7 @@ class _GraphPageState extends State<GraphPage> {
       "institute": "City General Hospital"
     },
     {
-      "date": "2023-04-10",
+      "date": "10 Apr",
       "value": 15,
       "refMin": 10,
       "refMax": 20,
@@ -57,7 +57,7 @@ class _GraphPageState extends State<GraphPage> {
       "institute": "MedFirst Diagnostics"
     },
     {
-      "date": "2023-05-20",
+      "date": "20 May",
       "value": -5,
       "type": "qualitative",
       "result": "positive",
@@ -65,7 +65,7 @@ class _GraphPageState extends State<GraphPage> {
       "institute": "Regional Health Center"
     },
     {
-      "date": "2023-06-12",
+      "date": "12 Jun",
       "value": 9,
       "refMin": 5,
       "refMax": 15,
@@ -74,7 +74,7 @@ class _GraphPageState extends State<GraphPage> {
       "institute": "Premier Medical Labs"
     },
     {
-      "date": "2023-07-23",
+      "date": "23 Jul",
       "value": -5,
       "type": "qualitative",
       "result": "positive",
@@ -82,7 +82,7 @@ class _GraphPageState extends State<GraphPage> {
       "institute": "Regional Health Center"
     },
     {
-      "date": "2023-08-18",
+      "date": "18 Aug",
       "value": 12,
       "refMin": 8,
       "refMax": 18,
@@ -91,7 +91,7 @@ class _GraphPageState extends State<GraphPage> {
       "institute": "HealthScope Labs"
     },
     {
-      "date": "2023-09-05",
+      "date": "05 Sep",
       "value": 22,
       "refMin": 15,
       "refMax": 25,
@@ -100,7 +100,7 @@ class _GraphPageState extends State<GraphPage> {
       "institute": "HealthScope Labs"
     },
     {
-      "date": "2023-10-30",
+      "date": "30 Oct",
       "value": 7,
       "refMin": 4,
       "refMax": 10,
@@ -109,7 +109,7 @@ class _GraphPageState extends State<GraphPage> {
       "institute": "City Medical Center"
     },
     {
-      "date": "2023-11-11",
+      "date": "11 Nov",
       "value": -5,
       "type": "qualitative",
       "result": "pending",
@@ -117,7 +117,7 @@ class _GraphPageState extends State<GraphPage> {
       "institute": "Metropolitan Lab Services"
     },
     {
-      "date": "2023-12-25",
+      "date": "25 Dec",
       "value": 14,
       "refMin": 10,
       "refMax": 20,
@@ -126,7 +126,7 @@ class _GraphPageState extends State<GraphPage> {
       "institute": "Advanced Diagnostic Solutions"
     },
     {
-      "date": "2024-01-09",
+      "date": "09 Jan",
       "value": 18,
       "refMin": 10,
       "refMax": 30,
@@ -135,7 +135,7 @@ class _GraphPageState extends State<GraphPage> {
       "institute": "MedFirst Diagnostics"
     },
     {
-      "date": "2024-02-10",
+      "date": "10 Feb",
       "value": 8,
       "refMin": 5,
       "refMax": 12,
@@ -144,7 +144,7 @@ class _GraphPageState extends State<GraphPage> {
       "institute": "City General Hospital"
     },
     {
-      "date": "2024-03-14",
+      "date": "14 Mar",
       "value": -5,
       "type": "qualitative",
       "result": "above_normal",
@@ -152,7 +152,7 @@ class _GraphPageState extends State<GraphPage> {
       "institute": "Premier Medical Labs"
     },
     {
-      "date": "2024-04-17",
+      "date": "17 Apr",
       "value": 13,
       "refMin": 10,
       "refMax": 20,
@@ -161,7 +161,7 @@ class _GraphPageState extends State<GraphPage> {
       "institute": "HealthScope Labs"
     },
     {
-      "date": "2024-05-23",
+      "date": "23 May",
       "value": 22,
       "refMin": 15,
       "refMax": 30,
@@ -170,7 +170,7 @@ class _GraphPageState extends State<GraphPage> {
       "institute": "City Medical Center"
     },
     {
-      "date": "2024-06-21",
+      "date": "21 Jun",
       "value": -5,
       "type": "qualitative",
       "result": "pending",
@@ -178,7 +178,7 @@ class _GraphPageState extends State<GraphPage> {
       "institute": "Premier Medical Labs"
     },
     {
-      "date": "2024-07-09",
+      "date": "09 Jul",
       "value": 16,
       "refMin": 12,
       "refMax": 22,
@@ -187,7 +187,7 @@ class _GraphPageState extends State<GraphPage> {
       "institute": "Metropolitan Lab Services"
     },
     {
-      "date": "2024-08-03",
+      "date": "03 Aug",
       "value": 19,
       "refMin": 14,
       "refMax": 25,
@@ -196,7 +196,7 @@ class _GraphPageState extends State<GraphPage> {
       "institute": "Regional Health Center"
     },
     {
-      "date": "2024-09-12",
+      "date": "12 Sep",
       "value": -5,
       "type": "qualitative",
       "result": "negative",
@@ -204,7 +204,7 @@ class _GraphPageState extends State<GraphPage> {
       "institute": "City General Hospital"
     },
     {
-      "date": "2024-10-28",
+      "date": "28 Oct",
       "value": 24,
       "refMin": 18,
       "refMax": 28,
@@ -213,7 +213,7 @@ class _GraphPageState extends State<GraphPage> {
       "institute": "MedFirst Diagnostics"
     },
     {
-      "date": "2024-11-05",
+      "date": "05 Nov",
       "value": 22,
       "refMin": 15,
       "refMax": 25,
@@ -222,7 +222,7 @@ class _GraphPageState extends State<GraphPage> {
       "institute": "HealthScope Labs"
     },
     {
-      "date": "2024-12-20",
+      "date": "20 Dec",
       "value": 14,
       "refMin": 10,
       "refMax": 20,
@@ -231,7 +231,7 @@ class _GraphPageState extends State<GraphPage> {
       "institute": "Advanced Diagnostic Solutions"
     },
     {
-      "date": "2025-01-01",
+      "date": "01 Jan",
       "value": 17,
       "refMin": 12,
       "refMax": 22,
@@ -240,7 +240,7 @@ class _GraphPageState extends State<GraphPage> {
       "institute": "Central Medical Lab"
     },
     {
-      "date": "2025-02-14",
+      "date": "14 Feb",
       "value": 20,
       "refMin": 15,
       "refMax": 28,
@@ -249,7 +249,7 @@ class _GraphPageState extends State<GraphPage> {
       "institute": "Metropolitan Lab Services"
     },
     {
-      "date": "2025-03-09",
+      "date": "09 Mar",
       "value": 12,
       "refMin": 8,
       "refMax": 18,
@@ -258,7 +258,7 @@ class _GraphPageState extends State<GraphPage> {
       "institute": "City Medical Center"
     },
     {
-      "date": "2025-04-22",
+      "date": "22 Apr",
       "value": -5,
       "type": "qualitative",
       "result": "positive",
@@ -266,7 +266,7 @@ class _GraphPageState extends State<GraphPage> {
       "institute": "Regional Health Center"
     },
     {
-      "date": "2025-05-30",
+      "date": "30 May",
       "value": 21,
       "refMin": 16,
       "refMax": 26,
@@ -275,7 +275,7 @@ class _GraphPageState extends State<GraphPage> {
       "institute": "Premier Medical Labs"
     },
     {
-      "date": "2025-06-14",
+      "date": "14 Jun",
       "value": 10,
       "refMin": 6,
       "refMax": 15,
@@ -284,7 +284,7 @@ class _GraphPageState extends State<GraphPage> {
       "institute": "HealthScope Labs"
     },
     {
-      "date": "2025-07-08",
+      "date": "08 Jul",
       "value": 25,
       "refMin": 20,
       "refMax": 30,
@@ -293,7 +293,7 @@ class _GraphPageState extends State<GraphPage> {
       "institute": "MedFirst Diagnostics"
     },
     {
-      "date": "2025-08-30",
+      "date": "30 Aug",
       "value": -5,
       "type": "qualitative",
       "result": "above_normal",
@@ -301,7 +301,7 @@ class _GraphPageState extends State<GraphPage> {
       "institute": "Metropolitan Lab Services"
     },
     {
-      "date": "2025-09-10",
+      "date": "10 Sep",
       "value": 14,
       "refMin": 9,
       "refMax": 18,
@@ -310,7 +310,7 @@ class _GraphPageState extends State<GraphPage> {
       "institute": "City General Hospital"
     },
     {
-      "date": "2025-10-25",
+      "date": "25 Oct",
       "value": 23,
       "refMin": 18,
       "refMax": 27,
@@ -319,7 +319,7 @@ class _GraphPageState extends State<GraphPage> {
       "institute": "Advanced Diagnostic Solutions"
     },
     {
-      "date": "2025-11-19",
+      "date": "19 Nov",
       "value": 8,
       "refMin": 5,
       "refMax": 12,
@@ -328,7 +328,7 @@ class _GraphPageState extends State<GraphPage> {
       "institute": "Regional Health Center"
     },
     {
-      "date": "2025-12-12",
+      "date": "12 Dec",
       "value": 6,
       "refMin": 4,
       "refMax": 10,
@@ -407,29 +407,11 @@ class _GraphPageState extends State<GraphPage> {
   }
 
   String _formatDate(String date) {
-    final parts = date.split('-');
+    final parts = date.split(' ');
     if (parts.length >= 2) {
-      return '${_getMonthAbbreviation(int.parse(parts[1]))}\n${parts[0].substring(2)}';
+      return '${parts[1]}\n${parts[0]}';
     }
     return date;
-  }
-
-  String _getMonthAbbreviation(int month) {
-    switch (month) {
-      case 1: return 'Jan';
-      case 2: return 'Feb';
-      case 3: return 'Mar';
-      case 4: return 'Apr';
-      case 5: return 'May';
-      case 6: return 'Jun';
-      case 7: return 'Jul';
-      case 8: return 'Aug';
-      case 9: return 'Sep';
-      case 10: return 'Oct';
-      case 11: return 'Nov';
-      case 12: return 'Dec';
-      default: return '';
-    }
   }
 
   @override
@@ -447,18 +429,26 @@ class _GraphPageState extends State<GraphPage> {
         numericSpots.add(FlSpot(i.toDouble(), (item['value'] as num).toDouble()));
       } else if (item['type'] == 'qualitative') {
         qualitativeIndices.add(i);
-        qualitativeSpots.add(FlSpot(i.toDouble(), 0)); // Using y=0 for qualitative data
+        qualitativeSpots.add(FlSpot(i.toDouble(), (item['value'] as num).toDouble()));
       }
     }
 
-    // Get all y values for numeric data to determine min/max
     final yValues = jsonData
         .where((item) => item['type'] == 'numeric')
         .map((item) => (item['value'] as num).toDouble())
         .toList();
 
-    // Add some padding to y-axis
-    final double minY = (yValues.isNotEmpty ? yValues.reduce((a, b) => a < b ? a : b) : 0) - 5;
+    // Get qualitative values (they're all -5 in your data)
+    final qualValues = jsonData
+        .where((item) => item['type'] == 'qualitative')
+        .map((item) => (item['value'] as num).toDouble())
+        .toList();
+
+    // Combine all values
+    final allValues = [...yValues, ...qualValues];
+
+    // Calculate min and max with padding
+    final double minY = (allValues.isNotEmpty ? allValues.reduce((a, b) => a < b ? a : b) : 0);
     final double maxY = (yValues.isNotEmpty ? yValues.reduce((a, b) => a > b ? a : b) : 0) + 5;
 
     final xLabels = jsonData.map((item) => _formatDate(item['date'])).toList();
@@ -634,8 +624,14 @@ class _GraphPageState extends State<GraphPage> {
                               showTitles: true,
                               reservedSize: 50,
                               getTitlesWidget: (value, meta) {
-                                return Text(value.toInt().toString(),
-                                    style: TextStyle(fontWeight: FontWeight.w400, fontSize: 12, color: Colors.grey.shade500));
+                                if (value > 0) {
+                                  return Text(value.toInt().toString(),
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 12,
+                                          color: Colors.grey.shade500));
+                                }
+                                return SizedBox.shrink();
                               },
                             ),
                           ),
@@ -670,8 +666,8 @@ class _GraphPageState extends State<GraphPage> {
                           LineChartBarData(
                             spots: numericSpots,
                             isCurved: false,
-                            color: Colors.black,
-                            barWidth: 2,
+                            color: Colors.transparent,
+                            barWidth: 0,
                             isStrokeCapRound: true,
                             belowBarData: BarAreaData(show: false),
                             dotData: FlDotData(
@@ -715,19 +711,6 @@ class _GraphPageState extends State<GraphPage> {
                           ),
                         ],
 
-                        extraLinesData: ExtraLinesData(
-                          extraLinesOnTop: false,
-                          horizontalLines: yValues
-                              .asMap()
-                              .entries
-                              .where((entry) => entry.key % 2 == 0) // Only take even indices
-                              .map((entry) => HorizontalLine(
-                            y: entry.value,
-                            color: Colors.grey.shade300,
-                            strokeWidth: 1,
-                          ))
-                              .toList(),
-                        ),
                         lineTouchData: LineTouchData(
                           touchTooltipData: LineTouchTooltipData(
                             getTooltipItems: (List<LineBarSpot> touchedSpots) => [],
